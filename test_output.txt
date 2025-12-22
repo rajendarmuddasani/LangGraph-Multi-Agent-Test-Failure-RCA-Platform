@@ -1,0 +1,22 @@
+============================================================
+🧪 Multi-Agent RCA Platform Test Suite
+============================================================
+
+🏥 Testing Health Endpoint...
+Status: 200
+Response: {
+  "status": "healthy",
+  "version": "1.0.0",
+  "environment": "development"
+}
+
+✅ Backend is healthy!
+
+📤 Testing RCA Submission...
+Status: 404
+Response: {
+  "detail": "Not Found"
+}
+❌ RCA submission failed
+
+⚠️  RCA submission failed, but backend is running
