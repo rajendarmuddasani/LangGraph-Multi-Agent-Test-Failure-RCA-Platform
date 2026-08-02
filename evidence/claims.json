@@ -1,0 +1,39 @@
+{
+  "project": "LangGraph Multi-Agent Test Failure RCA Platform",
+  "claims": [
+    {
+      "claim": "DataAnalystAgent.parse_stdf() returns die_count > 0 and yield in [0,1] for any lot/wafer input",
+      "value": true,
+      "unit": "boolean",
+      "evidence_class": "measured",
+      "artifact": "tests/test_agent_tools.py::test_parse_stdf_yield_between_0_and_1"
+    },
+    {
+      "claim": "StatisticalAnalystAgent._t_test_analysis() returns a p-value in [0, 1] using scipy.stats.ttest_ind",
+      "value": true,
+      "unit": "boolean",
+      "evidence_class": "measured",
+      "artifact": "tests/test_agent_tools.py::test_t_test_p_value_range"
+    },
+    {
+      "claim": "Control chart analysis always produces UCL > LCL (3-sigma bounds)",
+      "value": true,
+      "unit": "boolean",
+      "evidence_class": "measured",
+      "artifact": "tests/test_agent_tools.py::test_control_chart_ucl_greater_than_lcl"
+    },
+    {
+      "claim": "All 8 Pydantic schemas enforce field constraints: empty lot_id rejected, priority enum validated, confidence in [0,1], progress in [0,100]",
+      "value": true,
+      "unit": "boolean",
+      "evidence_class": "measured",
+      "artifact": "tests/test_schemas.py"
+    }
+  ],
+  "external_services": {
+    "openai": "not_required_for_tests",
+    "postgresql": "not_required_for_tests",
+    "langgraph": "stubbed_via_sys_modules",
+    "note": "All agent tests use mock stubs; pure Python logic tested directly"
+  }
+}
