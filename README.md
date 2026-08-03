@@ -1,5 +1,9 @@
 # P03: Multi-Agent Test Failure RCA Platform
 
+[![CI](https://github.com/rajendarmuddasani/LangGraph-Multi-Agent-Test-Failure-RCA-Platform/actions/workflows/ci.yml/badge.svg)](https://github.com/rajendarmuddasani/LangGraph-Multi-Agent-Test-Failure-RCA-Platform/actions/workflows/ci.yml)
+![Tests](https://img.shields.io/badge/tests-36%20passed-brightgreen)
+[![Evidence](https://img.shields.io/badge/evidence-verified-blue)](evidence/claims.json)
+
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-green.svg)](https://fastapi.tiangolo.com/)
 [![LangGraph](https://img.shields.io/badge/LangGraph-0.2-orange.svg)](https://langchain-ai.github.io/langgraph/)
