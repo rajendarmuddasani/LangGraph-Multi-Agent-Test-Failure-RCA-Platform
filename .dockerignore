@@ -1,0 +1,14 @@
+.git
+.github
+.pytest_cache
+.vite
+__pycache__
+*.py[cod]
+*.sqlite*
+.coverage
+htmlcov
+pdocs
+runtime
+.env
+.env.*
+test_output.txt

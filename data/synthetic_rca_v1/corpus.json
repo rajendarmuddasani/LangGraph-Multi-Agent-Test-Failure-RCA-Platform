@@ -1,0 +1,242 @@
+[
+  {
+    "document_id": "KB_1_01",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "edge_process_stress",
+    "text": "Synthetic reference case 1. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_1.",
+    "title": "Edge Process Stress"
+  },
+  {
+    "document_id": "KB_1_02",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "edge_process_stress",
+    "text": "Synthetic reference case 2. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_2.",
+    "title": "Edge Process Stress"
+  },
+  {
+    "document_id": "KB_1_03",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "edge_process_stress",
+    "text": "Synthetic reference case 3. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_3.",
+    "title": "Edge Process Stress"
+  },
+  {
+    "document_id": "KB_1_04",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "edge_process_stress",
+    "text": "Synthetic reference case 4. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_4.",
+    "title": "Edge Process Stress"
+  },
+  {
+    "document_id": "KB_1_05",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "edge_process_stress",
+    "text": "Synthetic reference case 5. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_5.",
+    "title": "Edge Process Stress"
+  },
+  {
+    "document_id": "KB_1_06",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "edge_process_stress",
+    "text": "Synthetic reference case 6. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_6.",
+    "title": "Edge Process Stress"
+  },
+  {
+    "document_id": "KB_2_01",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "probe_card_contamination",
+    "text": "Synthetic reference case 1. A narrow row or column stripe with elevated contact resistance and reduced FMAX is consistent with probe card contamination. Clean and re-qualify the probe interface. Evidence family REF_2_1.",
+    "title": "Probe Card Contamination"
+  },
+  {
+    "document_id": "KB_2_02",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "probe_card_contamination",
+    "text": "Synthetic reference case 2. A narrow row or column stripe with elevated contact resistance and reduced FMAX is consistent with probe card contamination. Clean and re-qualify the probe interface. Evidence family REF_2_2.",
+    "title": "Probe Card Contamination"
+  },
+  {
+    "document_id": "KB_2_03",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "probe_card_contamination",
+    "text": "Synthetic reference case 3. A narrow row or column stripe with elevated contact resistance and reduced FMAX is consistent with probe card contamination. Clean and re-qualify the probe interface. Evidence family REF_2_3.",
+    "title": "Probe Card Contamination"
+  },
+  {
+    "document_id": "KB_2_04",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "probe_card_contamination",
+    "text": "Synthetic reference case 4. A narrow row or column stripe with elevated contact resistance and reduced FMAX is consistent with probe card contamination. Clean and re-qualify the probe interface. Evidence family REF_2_4.",
+    "title": "Probe Card Contamination"
+  },
+  {
+    "document_id": "KB_2_05",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "probe_card_contamination",
+    "text": "Synthetic reference case 5. A narrow row or column stripe with elevated contact resistance and reduced FMAX is consistent with probe card contamination. Clean and re-qualify the probe interface. Evidence family REF_2_5.",
+    "title": "Probe Card Contamination"
+  },
+  {
+    "document_id": "KB_2_06",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "probe_card_contamination",
+    "text": "Synthetic reference case 6. A narrow row or column stripe with elevated contact resistance and reduced FMAX is consistent with probe card contamination. Clean and re-qualify the probe interface. Evidence family REF_2_6.",
+    "title": "Probe Card Contamination"
+  },
+  {
+    "document_id": "KB_3_01",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "tester_temperature_drift",
+    "text": "Synthetic reference case 1. Distributed failures with elevated temperature sensor readings and FMAX loss indicate tester temperature drift. Verify thermal control and chamber calibration. Evidence family REF_3_1.",
+    "title": "Tester Temperature Drift"
+  },
+  {
+    "document_id": "KB_3_02",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "tester_temperature_drift",
+    "text": "Synthetic reference case 2. Distributed failures with elevated temperature sensor readings and FMAX loss indicate tester temperature drift. Verify thermal control and chamber calibration. Evidence family REF_3_2.",
+    "title": "Tester Temperature Drift"
+  },
+  {
+    "document_id": "KB_3_03",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "tester_temperature_drift",
+    "text": "Synthetic reference case 3. Distributed failures with elevated temperature sensor readings and FMAX loss indicate tester temperature drift. Verify thermal control and chamber calibration. Evidence family REF_3_3.",
+    "title": "Tester Temperature Drift"
+  },
+  {
+    "document_id": "KB_3_04",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "tester_temperature_drift",
+    "text": "Synthetic reference case 4. Distributed failures with elevated temperature sensor readings and FMAX loss indicate tester temperature drift. Verify thermal control and chamber calibration. Evidence family REF_3_4.",
+    "title": "Tester Temperature Drift"
+  },
+  {
+    "document_id": "KB_3_05",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "tester_temperature_drift",
+    "text": "Synthetic reference case 5. Distributed failures with elevated temperature sensor readings and FMAX loss indicate tester temperature drift. Verify thermal control and chamber calibration. Evidence family REF_3_5.",
+    "title": "Tester Temperature Drift"
+  },
+  {
+    "document_id": "KB_3_06",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "tester_temperature_drift",
+    "text": "Synthetic reference case 6. Distributed failures with elevated temperature sensor readings and FMAX loss indicate tester temperature drift. Verify thermal control and chamber calibration. Evidence family REF_3_6.",
+    "title": "Tester Temperature Drift"
+  },
+  {
+    "document_id": "KB_4_01",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "lithography_focus_shift",
+    "text": "Synthetic reference case 1. A compact spatial cluster with a strong focus monitor and VTH shift is consistent with a lithography focus excursion. Review focus maps and reticle position. Evidence family REF_4_1.",
+    "title": "Lithography Focus Shift"
+  },
+  {
+    "document_id": "KB_4_02",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "lithography_focus_shift",
+    "text": "Synthetic reference case 2. A compact spatial cluster with a strong focus monitor and VTH shift is consistent with a lithography focus excursion. Review focus maps and reticle position. Evidence family REF_4_2.",
+    "title": "Lithography Focus Shift"
+  },
+  {
+    "document_id": "KB_4_03",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "lithography_focus_shift",
+    "text": "Synthetic reference case 3. A compact spatial cluster with a strong focus monitor and VTH shift is consistent with a lithography focus excursion. Review focus maps and reticle position. Evidence family REF_4_3.",
+    "title": "Lithography Focus Shift"
+  },
+  {
+    "document_id": "KB_4_04",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "lithography_focus_shift",
+    "text": "Synthetic reference case 4. A compact spatial cluster with a strong focus monitor and VTH shift is consistent with a lithography focus excursion. Review focus maps and reticle position. Evidence family REF_4_4.",
+    "title": "Lithography Focus Shift"
+  },
+  {
+    "document_id": "KB_4_05",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "lithography_focus_shift",
+    "text": "Synthetic reference case 5. A compact spatial cluster with a strong focus monitor and VTH shift is consistent with a lithography focus excursion. Review focus maps and reticle position. Evidence family REF_4_5.",
+    "title": "Lithography Focus Shift"
+  },
+  {
+    "document_id": "KB_4_06",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "lithography_focus_shift",
+    "text": "Synthetic reference case 6. A compact spatial cluster with a strong focus monitor and VTH shift is consistent with a lithography focus excursion. Review focus maps and reticle position. Evidence family REF_4_6.",
+    "title": "Lithography Focus Shift"
+  },
+  {
+    "document_id": "KB_5_01",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "random_esd_damage",
+    "text": "Synthetic reference case 1. Sparse spatially random failures with leakage and IDDQ elevation indicate random ESD damage. Inspect handling controls and perform electrical failure analysis. Evidence family REF_5_1.",
+    "title": "Random Esd Damage"
+  },
+  {
+    "document_id": "KB_5_02",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "random_esd_damage",
+    "text": "Synthetic reference case 2. Sparse spatially random failures with leakage and IDDQ elevation indicate random ESD damage. Inspect handling controls and perform electrical failure analysis. Evidence family REF_5_2.",
+    "title": "Random Esd Damage"
+  },
+  {
+    "document_id": "KB_5_03",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "random_esd_damage",
+    "text": "Synthetic reference case 3. Sparse spatially random failures with leakage and IDDQ elevation indicate random ESD damage. Inspect handling controls and perform electrical failure analysis. Evidence family REF_5_3.",
+    "title": "Random Esd Damage"
+  },
+  {
+    "document_id": "KB_5_04",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "random_esd_damage",
+    "text": "Synthetic reference case 4. Sparse spatially random failures with leakage and IDDQ elevation indicate random ESD damage. Inspect handling controls and perform electrical failure analysis. Evidence family REF_5_4.",
+    "title": "Random Esd Damage"
+  },
+  {
+    "document_id": "KB_5_05",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "random_esd_damage",
+    "text": "Synthetic reference case 5. Sparse spatially random failures with leakage and IDDQ elevation indicate random ESD damage. Inspect handling controls and perform electrical failure analysis. Evidence family REF_5_5.",
+    "title": "Random Esd Damage"
+  },
+  {
+    "document_id": "KB_5_06",
+    "license": "MIT",
+    "provenance": "independently_generated_synthetic",
+    "root_cause": "random_esd_damage",
+    "text": "Synthetic reference case 6. Sparse spatially random failures with leakage and IDDQ elevation indicate random ESD damage. Inspect handling controls and perform electrical failure analysis. Evidence family REF_5_6.",
+    "title": "Random Esd Damage"
+  }
+]

@@ -1,456 +1,175 @@
-# P03: Multi-Agent Test Failure RCA Platform
+# Evidence-Backed Multi-Agent Test Failure RCA
 
 [![CI](https://github.com/rajendarmuddasani/LangGraph-Multi-Agent-Test-Failure-RCA-Platform/actions/workflows/ci.yml/badge.svg)](https://github.com/rajendarmuddasani/LangGraph-Multi-Agent-Test-Failure-RCA-Platform/actions/workflows/ci.yml)
-![Tests](https://img.shields.io/badge/tests-36%20passed-brightgreen)
-[![Evidence](https://img.shields.io/badge/evidence-verified-blue)](evidence/claims.json)
+![Tests](https://img.shields.io/badge/tests-23%20passing-0f8a83)
+![LangGraph](https://img.shields.io/badge/LangGraph-1.2.10-6d5bd0)
+![Evidence](https://img.shields.io/badge/evidence-synthetic%20confirmation-2f6fed)
+![External LLM calls](https://img.shields.io/badge/external%20LLM%20calls-0-f2c14e)
+[![License: MIT](https://img.shields.io/badge/license-MIT-e76f51)](LICENSE)
 
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.115-green.svg)](https://fastapi.tiangolo.com/)
-[![LangGraph](https://img.shields.io/badge/LangGraph-0.2-orange.svg)](https://langchain-ai.github.io/langgraph/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+A deterministic six-node LangGraph RCA system that parses independently generated STDF,
+combines statistical/spatial/correlation evidence with local BM25 retrieval,
+ranks a root cause, routes uncertainty to review, persists the complete trace,
+and produces a cited report.
 
-## Overview
+> **Evidence boundary:** all accepted quality numbers come from a finite synthetic
+> benchmark. They do not establish accuracy, latency, throughput, or production
+> readiness on real semiconductor data.
 
-Enterprise-grade multi-agent AI system that orchestrates 6 specialized agents using LangGraph to autonomously perform comprehensive root cause analysis (RCA) of semiconductor test failures. Reduces RCA time from 4-8 hours to 20-30 minutes (target) with >85% accuracy (target).
+## Evidence Dashboard
 
-### Key Features
+| Evidence item | Accepted result | Source |
+|---|---:|---|
+| Data | 75 STDF files, 10,800 die, 75,600 measurements | [data manifest](data/synthetic_rca_v1/manifest.json) |
+| Split | 30 development / 20 validation / 25 confirmation | [data card](docs/DATA_CARD.md) |
+| Knowledge corpus | 30 independent synthetic RCA documents | [corpus](data/synthetic_rca_v1/corpus.json) |
+| Selected policy | `fusion_balanced_v1` (70% rules / 30% retrieval) | [selection](evidence/selection.json) |
+| Confirmation cause accuracy / macro F1 | 100% / 1.000 on 25 cases | [model evaluation](evidence/model_evaluation.json) |
+| Accuracy uncertainty | 86.68% to 100% Wilson 95% interval | [policy card](docs/POLICY_CARD.md) |
+| Automatic coverage / accepted accuracy | 72% / 100% | [model evaluation](evidence/model_evaluation.json) |
+| Engineer-review routing | 28% | [model evaluation](evidence/model_evaluation.json) |
+| Groundedness / citation correctness | 100% / 100% | [metric definitions](docs/POLICY_CARD.md) |
+| Unsupported citations / hallucination | 0% / 0% | [model evaluation](evidence/model_evaluation.json) |
+| Local latency p50 / p95 / p99 | 4.05 / 5.34 / 5.46 ms | [model evaluation](evidence/model_evaluation.json) |
+| External LLM calls / API cost | 0 / $0.00 | [runtime manifest](evidence/runtime_manifest.json) |
+| Corrupt-input rejection | 4/4 challenges | [model evaluation](evidence/model_evaluation.json) |
+| Software validation | 23 tests, 91% coverage, no known runtime CVEs | [local validation](evidence/local_validation.json) |
 
-- **Multi-Agent Collaboration**: 6 specialized agents (Data Analyst, Statistical Analyst, Spatial Pattern Detector, Correlation Hunter, ConclusionEngine, Report Generator)
-- **LangGraph State Machines**: Conditional agent routing with cycle detection and recovery
-- **Shared Memory**: Blackboard architecture with PostgreSQL storage
-- **RAG Integration**: Retrieval-augmented generation from 10+ years of RCA reports
-- **Real-Time Updates**: WebSocket streaming of agent progress and findings
-- **24/7 Autonomous Operation**: Process 500+ RCAs per day with <99.9% uptime
+The confirmation set had no incorrect predictions, so confirmation review recall
+has denominator zero. Development and validation errors were routed to review;
+real error-capture performance remains unproven.
 
-### Business Impact
+## What Was Compared
 
-- **Time Savings**: 4-8 hours → 20-30 minutes (target)
-- **Accuracy**: >85% match with expert conclusions (target)
+![Validation candidate comparison](evidence/assets/candidate_comparison.png)
 
-## Architecture
+| Candidate | Validation accuracy | Automatic coverage | Evidence sources | Local p95 | Outcome |
+|---|---:|---:|---:|---:|---|
+| `rules_v1` | 95% | 95% | 2.90 | 4.67 ms | Rejected; one reviewed error |
+| `retrieval_v1` | 100% | 95% | 1.00 | 4.57 ms | Rejected; single-source path |
+| `fusion_balanced_v1` | 100% | 95% | 3.95 | 4.23 ms | Selected |
+| `fusion_retrieval_heavy_v1` | 100% | 95% | 3.95 | 5.17 ms | No improvement; higher p95 |
 
-```
-┌──────────────────────────────────────────────────────┐
-│                    UI LAYER                          │
-│  React + TypeScript + WebSocket Real-Time Updates   │
-└────────────────────┬─────────────────────────────────┘
-                     │
-┌────────────────────▼─────────────────────────────────┐
-│              ORCHESTRATION LAYER                     │
-│         LangGraph State Machine                      │
-└────────────────────┬─────────────────────────────────┘
-                     │
-┌────────────────────▼─────────────────────────────────┐
-│                 AGENT LAYER                          │
-│  6 Specialized Agents (Data, Statistical, Spatial,  │
-│  Correlation, ConclusionEngine, Report Generator)        │
-└────────────────────┬─────────────────────────────────┘
-                     │
-┌────────────────────▼─────────────────────────────────┐
-│              TOOL & MEMORY LAYER                     │
-│  STDF Parser | Wafer Map CV | Stats Tests | RAG     │
-└────────────────────┬─────────────────────────────────┘
-                     │
-┌────────────────────▼─────────────────────────────────┐
-│                 DATA LAYER                           │
-│     PostgreSQL | Qdrant | MinIO                     │
-└──────────────────────────────────────────────────────┘
-```
+Candidates were selected only on validation using the frozen objective:
 
-## Quick Start
-
-### Prerequisites
-
-- Python 3.11+
-- Node.js 18+
-- Docker & Docker Compose
-- PostgreSQL 16
-- OpenAI API key (for GPT-4)
-
-### Installation
-
-```bash
-# Clone repository
-git clone https://github.com/rajendarmuddasani/LangGraph-Multi-Agent-Test-Failure-RCA-Platform.git
-cd LangGraph-Multi-Agent-Test-Failure-RCA-Platform
-
-# Set up environment
-cp .env.example .env
-# Edit .env with your API keys and configuration
-
-# Start infrastructure services
-docker-compose up -d postgres qdrant minio
-
-# Install backend dependencies
-cd backend
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-
-# Run database migrations
-alembic upgrade head
-
-# Start backend server
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-
-# In a new terminal, install frontend dependencies
-cd frontend
-npm install
-npm start
+```text
+0.40*task_success + 0.25*cause_accuracy
++ 0.20*citation_correctness + 0.15*groundedness
 ```
 
-### First RCA Submission
+All candidate details, including rejected/no-improvement runs, are retained in
+[evidence/candidate_results.json](evidence/candidate_results.json).
 
-```bash
-# Submit test RCA via API
-curl -X POST http://localhost:8000/api/v1/rca/submit \
-  -H "Content-Type: application/json" \
-  -d '{
-    "lot_id": "DEV1_LOT123",
-    "wafer_id": "W05",
-    "bin": 5,
-    "priority": "normal"
-  }'
+## Real Binary Ingestion
+
+![Parsed synthetic STDF wafer map](evidence/assets/sample_wafer_map.png)
+
+The bounded parser accepts the STDF v4 records used by this benchmark: FAR, MIR,
+WIR, PIR, PTR, PRR, WRR, and MRR. It verifies version/endianness, lifecycle
+records, file/record/die/test limits, coordinates, duplicate tests/die, and
+finite measurements. Malformed inputs fail closed before analysis.
+
+## Six-Node LangGraph Workflow
+
+```mermaid
+flowchart LR
+    A[STDF upload] --> B[1 Data Analyst]
+    B --> C[2 Statistical Analyst]
+    C --> D[3 Spatial Pattern Detector]
+    D --> E[4 Correlation Hunter]
+    E --> F[5 Conclusion Engine]
+    K[(30-document BM25 corpus)] --> F
+    F --> G[6 Report Generator]
+    G --> H[(SQLite session + trace)]
+    G --> I[JSON + cited HTML report]
 ```
 
-Or use the web UI at `http://localhost:3000`
+Each compiled LangGraph session carries input SHA-256, six node timings, ranked scores, rule/retrieval
+agreement, source-type diversity, citations, review status, limitations, and
+recommended validation steps.
 
-## Project Structure
+## Run the Accepted Path
 
-```
-P03_Multi_Agent_RCA_Platform/
-├── backend/                 # FastAPI backend
-│   ├── agents/             # 6 specialized agents
-│   │   ├── data_analyst.py
-│   │   ├── statistical_analyst.py
-│   │   ├── spatial_analyst.py
-│   │   ├── correlation_hunter.py
-│   │   ├── conclusion_engine.py
-│   │   └── report_generator.py
-│   ├── tools/              # Agent tools (STDF parser, stats, etc.)
-│   ├── orchestration/      # LangGraph + CrewAI
-│   ├── api/                # REST endpoints
-│   ├── database/           # PostgreSQL models
-│   ├── vector_db/          # Qdrant integration
-│   ├── auth/               # OAuth2/JWT authentication
-│   └── tests/              # Unit + integration tests
-├── frontend/               # React frontend
-│   ├── src/
-│   │   ├── components/    # UI components
-│   │   ├── pages/         # Page components
-│   │   ├── hooks/         # React hooks
-│   │   ├── api/           # API client
-│   │   └── utils/         # Utilities
-│   └── public/
-├── k8s/                    # Kubernetes manifests
-├── monitoring/             # Prometheus + Grafana
-├── scripts/                # Utility scripts
-├── data/                   # Sample data
-├── docs/                   # Documentation
-├── tests/                  # E2E tests
-├── .env.example            # Environment template
-├── docker-compose.yml      # Docker services
-├── MANUAL_TASKS.md        # Manual setup guide
-├── PRD.md                 # Product requirements
-└── README.md              # This file
+Requires Python 3.10+.
+
+```powershell
+python -m pip install -r backend/requirements-evidence.txt
+$env:RCA_EVIDENCE_API_KEY = "<choose-a-local-key>"
+python -m uvicorn evidence_app:app --app-dir backend --host 127.0.0.1 --port 8088
 ```
 
-## Core Components
+Open `http://127.0.0.1:8088` for the upload workbench. The UI can load the
+versioned development sample, display the six-agent trace, and open the persisted
+human-readable report.
 
-### 1. Multi-Agent System with LangGraph
+Authenticated API example:
 
-**LangGraph State Machine**:
-```python
-from langgraph.graph import StateGraph
-
-workflow = StateGraph(AgentState)
-workflow.add_node("data_analyst", data_analyst_agent)
-workflow.add_node("statistical_analyst", statistical_analyst_agent)
-workflow.add_node("spatial_analyst", spatial_analyst_agent)
-workflow.add_node("conclusion_engine", conclusion_engine_agent)
-
-workflow.set_entry_point("data_analyst")
-workflow.add_edge("data_analyst", "statistical_analyst")
-workflow.add_edge("statistical_analyst", "conclusion_engine")
+```powershell
+curl.exe -X POST http://127.0.0.1:8088/api/v1/evidence/analyze `
+  -H "X-API-Key: $env:RCA_EVIDENCE_API_KEY" `
+  -F "file=@data/synthetic_rca_v1/cases/development/DEV_001.stdf"
 ```
 
-### 2. RAG Integration
+See [deployment details](docs/DEPLOYMENT.md) and the
+[security boundary](docs/SECURITY.md).
 
-```python
-from langchain_chroma import Chroma
-from langchain_openai import OpenAIEmbeddings
+## Reproduce the Evidence
 
-vectorstore = Chroma(
-    collection_name="rca_reports",
-    embedding_function=OpenAIEmbeddings(model="text-embedding-3-large")
-)
-
-# Semantic search
-similar_rcas = vectorstore.similarity_search(
-    query="Edge effect DEV1 BGA436",
-    k=5,
-    filter={"product": "DEV1"}
-)
+```powershell
+python scripts/validate_evidence.py
+python scripts/run_evidence_benchmark.py --stage replay
+python -m pytest -q
+python -m ruff check backend/rca_evidence backend/evidence_app.py scripts `
+  tests/test_evidence_*.py tests/test_stdf_evidence.py `
+  tests/test_synthetic_dataset.py tests/test_retrieval_evidence.py `
+  --select E,W,F --ignore E501
 ```
 
-### 3. Real-Time Updates
+`validate_evidence.py` regenerates all 75 STDF files in a temporary directory and
+compares the complete 80-file inventory and hashes. Replay recomputes stable
+confirmation metrics for the already-selected champion; it does not reselect.
 
-```python
-# Backend WebSocket
-from fastapi import WebSocket
+## Deployment Surface
 
-@app.websocket("/ws/{session_id}")
-async def websocket_endpoint(websocket: WebSocket, session_id: str):
-    await websocket.accept()
-    async for update in agent_progress_stream(session_id):
-        await websocket.send_json(update)
+The minimal Chainguard image in `backend/Dockerfile.evidence` installs four pinned runtime
+packages, runs as UID/GID 65532, and exposes the hash-verified policy. Compose
+adds a read-only root filesystem, dropped capabilities, `no-new-privileges`,
+and one explicit SQLite volume. CI is configured to build the Linux image and
+perform health, authentication, analysis, and non-root smoke checks.
+
+The local workstation currently provides a Windows-container engine, so local
+Linux image execution is not claimed. Remote container evidence remains pending
+until publication triggers CI.
+
+## Repository Map
+
+```text
+backend/rca_evidence/           parser, analysis, BM25, workflow, metrics, store
+backend/evidence_app.py         accepted FastAPI runtime
+backend/evidence_static/        responsive upload/report workbench
+data/synthetic_rca_v1/          75 STDF files, split manifests, corpus
+evidence/                       claims, candidates, selection, confirmation, assets
+scripts/                        generate, evaluate, replay, validate, render assets
+tests/                          parser, retrieval, workflow, metrics, API, integrity
+docs/                           data, policy, deployment, and security cards
 ```
 
-```javascript
-// Frontend WebSocket client
-const ws = new WebSocket(`ws://localhost:8000/ws/${sessionId}`);
-ws.onmessage = (event) => {
-  const update = JSON.parse(event.data);
-  setAgentProgress(update);
-};
-```
+## Clean Runtime Surface
 
-## API Documentation
+The earlier mocked LangChain/OpenAI/Qdrant/PostgreSQL service and unused React
+scaffold were removed after audits found 129 Python and seven frontend production
+dependency vulnerabilities. The repository now exposes only the evaluated
+LangGraph/BM25/SQLite path and its four pinned runtime dependencies.
 
-### REST Endpoints
+## Limitations and Promotion Gates
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/v1/rca/submit` | POST | Submit new RCA request |
-| `/api/v1/rca/{id}/status` | GET | Get RCA status |
-| `/api/v1/rca/{id}/results` | GET | Get RCA results |
-| `/api/v1/rca/{id}/feedback` | POST | Submit user feedback |
-| `/api/v1/rag/search` | POST | Search knowledge base |
-| `/api/v1/reports/{id}.pdf` | GET | Download PDF report |
+- Synthetic data only; no real-domain accuracy claim.
+- Bounded STDF subset, not universal STDF compatibility.
+- Local latency benchmark, not a production SLO.
+- No accepted 500-RCA/day, uptime, engineering-time, or cost-savings claim.
+- No external LLM is used by the selected policy.
+- Real deployment requires licensed representative files, expert-adjudicated
+  labels, product/tester/lot/time isolation, calibrated uncertainty, parser
+  fuzzing, load/soak tests, and operating approval.
 
-Full API documentation: http://localhost:8000/docs (Swagger UI)
-
-## Configuration
-
-### Environment Variables
-
-See `.env.example` for full list. Key variables:
-
-```bash
-# LLM Configuration
-OPENAI_API_KEY=sk-...
-ANTHROPIC_API_KEY=sk-ant-...  # Fallback
-
-# Database
-DATABASE_URL=postgresql://user:pass@localhost:5432/rca_platform
-
-# Vector Database
-QDRANT_URL=http://localhost:6333
-
-# Redis Cache
-REDIS_URL=redis://localhost:6379/0
-
-# Authentication
-JWT_SECRET_KEY=your-256-bit-secret
-OAUTH2_CLIENT_ID=azure-ad-client-id
-```
-
-### Agent Configuration
-
-Edit `backend/config/agents.yaml`:
-
-```yaml
-agents:
-  data_analyst:
-    llm_model: gpt-4-turbo
-    temperature: 0.0
-    max_tokens: 2000
-    tools: [parse_stdf, generate_wafer_map, sql_query]
-  
-  statistical_analyst:
-    llm_model: gpt-4-turbo
-    temperature: 0.0
-    max_tokens: 3000
-    tools: [ttest, anova, correlation, outlier_detection]
-```
-
-## Testing
-
-```bash
-# Unit tests
-cd backend
-pytest tests/unit -v --cov=.
-
-# Integration tests
-pytest tests/integration -v
-
-# E2E tests (requires running services)
-pytest tests/e2e -v
-
-# Load testing
-locust -f tests/load/locustfile.py --host=http://localhost:8000
-```
-
-## Deployment
-
-### Docker Compose (Development)
-
-```bash
-docker-compose up
-```
-
-### Kubernetes (Production)
-
-```bash
-# Apply Kubernetes manifests
-kubectl apply -f k8s/namespace.yaml
-kubectl apply -f k8s/secrets.yaml
-kubectl apply -f k8s/postgres/
-kubectl apply -f k8s/backend/
-kubectl apply -f k8s/frontend/
-```
-
-### Helm Chart (Alternative)
-
-```bash
-helm install rca-platform ./helm/rca-platform \
-  --namespace rca-platform \
-  --values values.production.yaml
-```
-
-## Monitoring
-
-### Prometheus Metrics
-
-```
-# RCA throughput
-rca_submissions_total{status="completed"} 450
-rca_duration_seconds{quantile="0.95"} 1200  # 20 minutes
-
-# Agent performance
-agent_executions_total{agent="StatisticalAnalyst",status="success"} 420
-agent_duration_seconds{agent="StatisticalAnalyst",quantile="0.95"} 120
-
-# LLM usage
-llm_tokens_total{provider="openai",type="input"} 30000
-llm_api_latency_seconds{provider="openai",quantile="0.95"} 4.5
-```
-
-### Grafana Dashboards
-
-Pre-built dashboards in `monitoring/grafana/dashboards/`:
-- Operational Dashboard (RCA throughput, latency, errors)
-- Business Dashboard (user adoption, satisfaction, ROI)
-- ML Dashboard (agent performance, LLM usage, RAG effectiveness)
-
-Access: http://localhost:3000 (admin / password from .env)
-
-
-
-## Troubleshooting
-
-### Common Issues
-
-**Agent timeout errors**:
-```bash
-# Check LLM API connectivity
-curl https://api.openai.com/v1/models -H "Authorization: Bearer $OPENAI_API_KEY"
-
-# Increase timeout in agent config
-# backend/config/agents.yaml: timeout: 600  # 10 minutes
-```
-
-**Vector search returns no results**:
-```bash
-# Verify Qdrant collection exists
-curl http://localhost:6333/collections/rca_knowledge_base
-
-# Re-embed knowledge base
-python scripts/embed_knowledge_base.py --force
-```
-
-**WebSocket connection fails**:
-```bash
-# Check nginx proxy configuration
-# Ensure Upgrade header is set:
-# proxy_set_header Upgrade $http_upgrade;
-# proxy_set_header Connection "upgrade";
-```
-
-## Contributing
-
-1. Fork repository
-2. Create feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m 'Add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Open pull request
-
-### Development Guidelines
-
-- Follow PEP 8 (Python) and Airbnb (JavaScript) style guides
-- Write unit tests for all new features (>85% coverage required)
-- Update documentation for API changes
-- Run linters before commit: `ruff check .` (Python), `npm run lint` (JavaScript)
-
-## License
-
-This project is licensed under the MIT License - see LICENSE file for details.
-
-## Acknowledgments
-
-- LangChain team for LangGraph framework
-- CrewAI team for hierarchical agent orchestration
-- Qdrant team for vector database
-- OpenAI and Anthropic for LLM APIs
-
-## Support
-
-- **Issue Tracker**: https://github.com/rajendarmuddasani/LangGraph-Multi-Agent-Test-Failure-RCA-Platform/issues
-
-## Roadmap
-
-### 1
-- [ ] Self-reflection agents (agents critique own hypotheses)
-- [ ] Dynamic tool creation (agents write custom Python functions)
-- [ ] Multi-modal integration (shmoo plots, FA images)
-
-### 2
-- [ ] **Knowledge Graph Enhancement**: Neo4j for explicit causality relationships and parameter-defect correlations
-  - Store explicit rules: "If edge_effect AND die_cracking → substrate_issue"
-  - Graph-based parameter correlation tracing (param → defect relationships)
-- [ ] **Domain Ontology**: Formal taxonomy for test parameters, defect types, and failure modes
-  - Test parameter hierarchy: TestParam → ElectricalParam → VoltageParam
-  - Defect taxonomy: PhysicalDefect → CrackDefect → DieCrack
-- [ ] **Rule-Based Reasoning**: Expert rule engine for deterministic hypothesis generation
-  - Example: `if spatial_pattern == "edge" and correlation["substrate_temp"] > 0.7: add_hypothesis("Substrate temperature gradient", confidence=0.9)`
-  - Combine data-driven (LLM) with rule-driven (expert knowledge) approaches
-- [ ] **Active Learning Loop**: Update knowledge base weights from engineer feedback (confirmed/rejected hypotheses)
-  - Currently: Store feedback passively
-  - Enhancement: Adjust RAG retrieval weights, retrain embeddings, update rule confidence scores
-- [ ] RLHF fine-tuning (reinforcement learning from human feedback)
-- [ ] On-premise LLM deployment (Llama 3.1 70B)
-- [ ] Mobile app (iOS/Android)
-
-### 3
-- [ ] Cross-product learning (DEV1 insights inform DEV2 agents)
-- [ ] Predictive RCA (predict failures before they occur)
-- [ ] Integration with ML Data Pipeline
-
-## Citation
-
-If you use this platform in research or production, please cite:
-
-```bibtex
-@software{multi_agent_rca_platform,
-  title={Multi-Agent Test Failure RCA Platform},
-  author={Rajendar Muddasani},
-  year={2025},
-  version={1.0},
-  url={https://github.com/rajendarmuddasani/LangGraph-Multi-Agent-Test-Failure-RCA-Platform}
-}
-```
-
----
-
-**Version**: 1.0.0  
-**Last Updated**: 2025-12-22
+The data and code are available under the [MIT License](LICENSE).

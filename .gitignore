@@ -43,7 +43,7 @@ ENV/
 *~
 .DS_Store
 
-# Node.js / Frontend
+# Node.js tooling
 node_modules/
 npm-debug.log*
 yarn-debug.log*
@@ -81,7 +81,6 @@ coverage.xml
 backend/__pycache__/
 backend/*.pyc
 backend/.pytest_cache/
-backend/alembic/versions/*.pyc
 
 # Logs
 *.log
@@ -93,3 +92,5 @@ logs/
 
 # OS
 Thumbs.db
+pdocs/
+/runtime/

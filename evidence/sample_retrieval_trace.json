@@ -1,0 +1,55 @@
+{
+  "citations": [
+    "analysis:correlation#FMAX",
+    "analysis:correlation#IDDQ",
+    "analysis:correlation#VTH",
+    "kb:KB_1_01",
+    "kb:KB_1_02",
+    "kb:KB_1_03",
+    "kb:KB_1_04",
+    "kb:KB_1_05",
+    "analysis:spatial#peripheral_edge",
+    "analysis:statistical#FMAX",
+    "analysis:statistical#IDDQ",
+    "analysis:statistical#VTH"
+  ],
+  "hits": [
+    {
+      "document_id": "KB_1_01",
+      "root_cause": "edge_process_stress",
+      "score": 9.31624112778292,
+      "text": "Synthetic reference case 1. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_1.",
+      "title": "Edge Process Stress"
+    },
+    {
+      "document_id": "KB_1_02",
+      "root_cause": "edge_process_stress",
+      "score": 9.31624112778292,
+      "text": "Synthetic reference case 2. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_2.",
+      "title": "Edge Process Stress"
+    },
+    {
+      "document_id": "KB_1_03",
+      "root_cause": "edge_process_stress",
+      "score": 9.31624112778292,
+      "text": "Synthetic reference case 3. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_3.",
+      "title": "Edge Process Stress"
+    },
+    {
+      "document_id": "KB_1_04",
+      "root_cause": "edge_process_stress",
+      "score": 9.31624112778292,
+      "text": "Synthetic reference case 4. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_4.",
+      "title": "Edge Process Stress"
+    },
+    {
+      "document_id": "KB_1_05",
+      "root_cause": "edge_process_stress",
+      "score": 9.31624112778292,
+      "text": "Synthetic reference case 5. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_5.",
+      "title": "Edge Process Stress"
+    }
+  ],
+  "query": "peripheral edge failures edge distance elevated iddq reduced vth reduced fmax reduced temp sensor",
+  "session_id": "fusion_balanced_v1-CNF_001"
+}

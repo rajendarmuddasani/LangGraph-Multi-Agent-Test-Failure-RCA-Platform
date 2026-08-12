@@ -1,0 +1,633 @@
+{
+  "error": null,
+  "evidence_registry": {
+    "analysis:correlation#FMAX": {
+      "detail": "FMAX failure correlation -0.7281",
+      "source_type": "correlation",
+      "supports": [
+        "probe_card_contamination",
+        "tester_temperature_drift",
+        "edge_process_stress"
+      ]
+    },
+    "analysis:correlation#IDDQ": {
+      "detail": "IDDQ failure correlation 0.9474",
+      "source_type": "correlation",
+      "supports": [
+        "edge_process_stress",
+        "tester_temperature_drift",
+        "random_esd_damage"
+      ]
+    },
+    "analysis:correlation#TEMP_SENSOR": {
+      "detail": "TEMP_SENSOR failure correlation -0.1312",
+      "source_type": "correlation",
+      "supports": []
+    },
+    "analysis:correlation#VTH": {
+      "detail": "VTH failure correlation -0.9457",
+      "source_type": "correlation",
+      "supports": [
+        "edge_process_stress"
+      ]
+    },
+    "analysis:spatial#peripheral_edge": {
+      "detail": "pattern=peripheral_edge, edge=0.7059, stripe=0.2157, component=0.5882",
+      "source_type": "spatial",
+      "supports": [
+        "edge_process_stress"
+      ]
+    },
+    "analysis:statistical#CONTACT_RES": {
+      "detail": "CONTACT_RES failed/pass effect size -0.0979",
+      "source_type": "statistical",
+      "supports": []
+    },
+    "analysis:statistical#FMAX": {
+      "detail": "FMAX failed/pass effect size -2.2056",
+      "source_type": "statistical",
+      "supports": [
+        "probe_card_contamination",
+        "tester_temperature_drift",
+        "edge_process_stress"
+      ]
+    },
+    "analysis:statistical#FOCUS_MON": {
+      "detail": "FOCUS_MON failed/pass effect size -0.1315",
+      "source_type": "statistical",
+      "supports": []
+    },
+    "analysis:statistical#IDDQ": {
+      "detail": "IDDQ failed/pass effect size 6.1455",
+      "source_type": "statistical",
+      "supports": [
+        "edge_process_stress",
+        "tester_temperature_drift",
+        "random_esd_damage"
+      ]
+    },
+    "analysis:statistical#LEAKAGE": {
+      "detail": "LEAKAGE failed/pass effect size -0.1289",
+      "source_type": "statistical",
+      "supports": []
+    },
+    "analysis:statistical#TEMP_SENSOR": {
+      "detail": "TEMP_SENSOR failed/pass effect size -0.2747",
+      "source_type": "statistical",
+      "supports": []
+    },
+    "analysis:statistical#VTH": {
+      "detail": "VTH failed/pass effect size -6.0430",
+      "source_type": "statistical",
+      "supports": [
+        "edge_process_stress"
+      ]
+    },
+    "input:61fc3cd9174f1d4e88108b841a36fcc7f86442e2b5d26706dfa89dd543bc612c#summary": {
+      "detail": "144 die, 51 failures, yield 0.6458",
+      "source_type": "input",
+      "supports": []
+    },
+    "kb:KB_1_01": {
+      "detail": "Synthetic reference case 1. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_1.",
+      "score": 9.31624112778292,
+      "source_type": "knowledge_base",
+      "supports": [
+        "edge_process_stress"
+      ]
+    },
+    "kb:KB_1_02": {
+      "detail": "Synthetic reference case 2. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_2.",
+      "score": 9.31624112778292,
+      "source_type": "knowledge_base",
+      "supports": [
+        "edge_process_stress"
+      ]
+    },
+    "kb:KB_1_03": {
+      "detail": "Synthetic reference case 3. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_3.",
+      "score": 9.31624112778292,
+      "source_type": "knowledge_base",
+      "supports": [
+        "edge_process_stress"
+      ]
+    },
+    "kb:KB_1_04": {
+      "detail": "Synthetic reference case 4. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_4.",
+      "score": 9.31624112778292,
+      "source_type": "knowledge_base",
+      "supports": [
+        "edge_process_stress"
+      ]
+    },
+    "kb:KB_1_05": {
+      "detail": "Synthetic reference case 5. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_5.",
+      "score": 9.31624112778292,
+      "source_type": "knowledge_base",
+      "supports": [
+        "edge_process_stress"
+      ]
+    }
+  },
+  "external_cost_usd": 0.0,
+  "external_llm_calls": 0,
+  "input_summary": {
+    "byte_count": 30428,
+    "coordinate_bounds": {
+      "max_x": 11,
+      "max_y": 11,
+      "min_x": 0,
+      "min_y": 0
+    },
+    "die_count": 144,
+    "fail_rate": 0.3541666666666667,
+    "failed_die_count": 51,
+    "file_sha256": "61fc3cd9174f1d4e88108b841a36fcc7f86442e2b5d26706dfa89dd543bc612c",
+    "lot_id": "SYNTH_CNF_001",
+    "record_counts": {
+      "FAR": 1,
+      "MIR": 1,
+      "MRR": 1,
+      "PIR": 144,
+      "PRR": 144,
+      "PTR": 1008,
+      "WIR": 1,
+      "WRR": 1
+    },
+    "test_names": [
+      "CONTACT_RES",
+      "FMAX",
+      "FOCUS_MON",
+      "IDDQ",
+      "LEAKAGE",
+      "TEMP_SENSOR",
+      "VTH"
+    ],
+    "wafer_id": "W01",
+    "yield_rate": 0.6458333333333334
+  },
+  "latency_ms": 4.7611000190954655,
+  "metadata": {
+    "agent_count": 6,
+    "deterministic_local_policy": true,
+    "knowledge_document_count": 30
+  },
+  "policy_id": "fusion_balanced_v1",
+  "prediction": {
+    "citations": [
+      "analysis:correlation#FMAX",
+      "analysis:correlation#IDDQ",
+      "analysis:correlation#VTH",
+      "kb:KB_1_01",
+      "kb:KB_1_02",
+      "kb:KB_1_03",
+      "kb:KB_1_04",
+      "kb:KB_1_05",
+      "analysis:spatial#peripheral_edge",
+      "analysis:statistical#FMAX",
+      "analysis:statistical#IDDQ",
+      "analysis:statistical#VTH"
+    ],
+    "confidence": 0.9254246290272559,
+    "evidence_source_types": [
+      "correlation",
+      "knowledge_base",
+      "spatial",
+      "statistical"
+    ],
+    "ranked_scores": [
+      {
+        "root_cause": "edge_process_stress",
+        "score": 1.0
+      },
+      {
+        "root_cause": "tester_temperature_drift",
+        "score": 0.27198526818051333
+      },
+      {
+        "root_cause": "random_esd_damage",
+        "score": 0.2400483802817419
+      },
+      {
+        "root_cause": "lithography_focus_shift",
+        "score": 0.18497946134701776
+      },
+      {
+        "root_cause": "probe_card_contamination",
+        "score": 0.15577585994090465
+      }
+    ],
+    "retrieval_hits": [
+      {
+        "document_id": "KB_1_01",
+        "root_cause": "edge_process_stress",
+        "score": 9.31624112778292,
+        "text": "Synthetic reference case 1. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_1.",
+        "title": "Edge Process Stress"
+      },
+      {
+        "document_id": "KB_1_02",
+        "root_cause": "edge_process_stress",
+        "score": 9.31624112778292,
+        "text": "Synthetic reference case 2. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_2.",
+        "title": "Edge Process Stress"
+      },
+      {
+        "document_id": "KB_1_03",
+        "root_cause": "edge_process_stress",
+        "score": 9.31624112778292,
+        "text": "Synthetic reference case 3. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_3.",
+        "title": "Edge Process Stress"
+      },
+      {
+        "document_id": "KB_1_04",
+        "root_cause": "edge_process_stress",
+        "score": 9.31624112778292,
+        "text": "Synthetic reference case 4. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_4.",
+        "title": "Edge Process Stress"
+      },
+      {
+        "document_id": "KB_1_05",
+        "root_cause": "edge_process_stress",
+        "score": 9.31624112778292,
+        "text": "Synthetic reference case 5. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_5.",
+        "title": "Edge Process Stress"
+      }
+    ],
+    "retrieval_prediction": "edge_process_stress",
+    "retrieval_query": "peripheral edge failures edge distance elevated iddq reduced vth reduced fmax reduced temp sensor",
+    "root_cause": "edge_process_stress",
+    "rule_prediction": "edge_process_stress",
+    "rule_retrieval_disagreement": false
+  },
+  "report": {
+    "citations": [
+      "analysis:correlation#FMAX",
+      "analysis:correlation#IDDQ",
+      "analysis:correlation#VTH",
+      "kb:KB_1_01",
+      "kb:KB_1_02",
+      "kb:KB_1_03",
+      "kb:KB_1_04",
+      "kb:KB_1_05",
+      "analysis:spatial#peripheral_edge",
+      "analysis:statistical#FMAX",
+      "analysis:statistical#IDDQ",
+      "analysis:statistical#VTH"
+    ],
+    "executive_summary": "The evidence policy ranked edge process stress first at confidence 0.925.",
+    "findings": {
+      "spatial_pattern": "peripheral_edge",
+      "top_correlations": [
+        "IDDQ",
+        "VTH",
+        "FMAX",
+        "TEMP_SENSOR"
+      ],
+      "top_statistical_tests": [
+        "IDDQ",
+        "VTH",
+        "FMAX",
+        "TEMP_SENSOR"
+      ]
+    },
+    "input": {
+      "byte_count": 30428,
+      "coordinate_bounds": {
+        "max_x": 11,
+        "max_y": 11,
+        "min_x": 0,
+        "min_y": 0
+      },
+      "die_count": 144,
+      "fail_rate": 0.3541666666666667,
+      "failed_die_count": 51,
+      "file_sha256": "61fc3cd9174f1d4e88108b841a36fcc7f86442e2b5d26706dfa89dd543bc612c",
+      "lot_id": "SYNTH_CNF_001",
+      "record_counts": {
+        "FAR": 1,
+        "MIR": 1,
+        "MRR": 1,
+        "PIR": 144,
+        "PRR": 144,
+        "PTR": 1008,
+        "WIR": 1,
+        "WRR": 1
+      },
+      "test_names": [
+        "CONTACT_RES",
+        "FMAX",
+        "FOCUS_MON",
+        "IDDQ",
+        "LEAKAGE",
+        "TEMP_SENSOR",
+        "VTH"
+      ],
+      "wafer_id": "W01",
+      "yield_rate": 0.6458333333333334
+    },
+    "limitations": [
+      "Evidence is generated from an independent synthetic benchmark.",
+      "The policy has no authority to disposition material or control test equipment.",
+      "A qualified engineer must review flagged or real-domain cases."
+    ],
+    "material_claims": [
+      {
+        "citations": [
+          "analysis:correlation#FMAX",
+          "analysis:correlation#IDDQ",
+          "analysis:correlation#VTH",
+          "kb:KB_1_01",
+          "kb:KB_1_02",
+          "kb:KB_1_03",
+          "kb:KB_1_04",
+          "kb:KB_1_05",
+          "analysis:spatial#peripheral_edge",
+          "analysis:statistical#FMAX",
+          "analysis:statistical#IDDQ",
+          "analysis:statistical#VTH"
+        ],
+        "claim": "Primary root cause: edge_process_stress"
+      },
+      {
+        "citations": [
+          "analysis:spatial#peripheral_edge"
+        ],
+        "claim": "Spatial pattern: peripheral_edge"
+      }
+    ],
+    "next_steps": [
+      "Review edge-process controls and wafer-edge metrology.",
+      "Cross-section representative peripheral die before disposition."
+    ],
+    "ranked_hypotheses": [
+      {
+        "root_cause": "edge_process_stress",
+        "score": 1.0
+      },
+      {
+        "root_cause": "tester_temperature_drift",
+        "score": 0.27198526818051333
+      },
+      {
+        "root_cause": "random_esd_damage",
+        "score": 0.2400483802817419
+      }
+    ],
+    "review_required": false,
+    "title": "Synthetic STDF Root Cause Analysis"
+  },
+  "review_required": false,
+  "session_id": "fusion_balanced_v1-CNF_001",
+  "stage_traces": [
+    {
+      "agent": "DataAnalyst",
+      "index": 1,
+      "latency_ms": 3.0576999997720122,
+      "output": {
+        "byte_count": 30428,
+        "coordinate_bounds": {
+          "max_x": 11,
+          "max_y": 11,
+          "min_x": 0,
+          "min_y": 0
+        },
+        "die_count": 144,
+        "fail_rate": 0.3541666666666667,
+        "failed_die_count": 51,
+        "file_sha256": "61fc3cd9174f1d4e88108b841a36fcc7f86442e2b5d26706dfa89dd543bc612c",
+        "lot_id": "SYNTH_CNF_001",
+        "record_counts": {
+          "FAR": 1,
+          "MIR": 1,
+          "MRR": 1,
+          "PIR": 144,
+          "PRR": 144,
+          "PTR": 1008,
+          "WIR": 1,
+          "WRR": 1
+        },
+        "test_names": [
+          "CONTACT_RES",
+          "FMAX",
+          "FOCUS_MON",
+          "IDDQ",
+          "LEAKAGE",
+          "TEMP_SENSOR",
+          "VTH"
+        ],
+        "wafer_id": "W01",
+        "yield_rate": 0.6458333333333334
+      }
+    },
+    {
+      "agent": "StatisticalAnalyst",
+      "index": 2,
+      "latency_ms": 1.063599978806451,
+      "output": {
+        "ranked_tests": [
+          "IDDQ",
+          "VTH",
+          "FMAX",
+          "TEMP_SENSOR",
+          "FOCUS_MON",
+          "LEAKAGE",
+          "CONTACT_RES"
+        ],
+        "strong_effect_count": 3,
+        "tests": {
+          "CONTACT_RES": {
+            "effect_size": -0.09785748300962278,
+            "failed_mean": 0.10019366691509883,
+            "failed_support": 51,
+            "passed_mean": 0.10124912938123108,
+            "passed_support": 93
+          },
+          "FMAX": {
+            "effect_size": -2.2056104528093012,
+            "failed_mean": 956.1566078335632,
+            "failed_support": 51,
+            "passed_mean": 999.6639082713793,
+            "passed_support": 93
+          },
+          "FOCUS_MON": {
+            "effect_size": -0.13145301009138088,
+            "failed_mean": -0.00784972448851548,
+            "failed_support": 51,
+            "passed_mean": 0.02178399902718362,
+            "passed_support": 93
+          },
+          "IDDQ": {
+            "effect_size": 6.145543457716326,
+            "failed_mean": 131.82153873817595,
+            "failed_support": 51,
+            "passed_mean": 100.29031363866662,
+            "passed_support": 93
+          },
+          "LEAKAGE": {
+            "effect_size": -0.12886265472630018,
+            "failed_mean": 0.9831597244038301,
+            "failed_support": 51,
+            "passed_mean": 0.9995683034261068,
+            "passed_support": 93
+          },
+          "TEMP_SENSOR": {
+            "effect_size": -0.27473297393621915,
+            "failed_mean": 24.97032251545027,
+            "failed_support": 51,
+            "passed_mean": 25.06939797760338,
+            "passed_support": 93
+          },
+          "VTH": {
+            "effect_size": -6.04302574593308,
+            "failed_mean": 0.6440607484649209,
+            "failed_support": 51,
+            "passed_mean": 0.7217714414801649,
+            "passed_support": 93
+          }
+        }
+      }
+    },
+    {
+      "agent": "SpatialPatternDetector",
+      "index": 3,
+      "latency_ms": 0.14849999570287764,
+      "output": {
+        "edge_fraction": 0.7058823529411765,
+        "failed_coordinate_count": 51,
+        "largest_component_fraction": 0.5882352941176471,
+        "pattern": "peripheral_edge",
+        "quadrant_entropy": 0.9909851028891328,
+        "stripe_fraction": 0.21568627450980393
+      }
+    },
+    {
+      "agent": "CorrelationHunter",
+      "index": 4,
+      "latency_ms": 0.3225000109523535,
+      "output": {
+        "correlations": {
+          "CONTACT_RES": -0.04707749973587621,
+          "FMAX": -0.7281220274364671,
+          "FOCUS_MON": -0.06318341007038403,
+          "IDDQ": 0.9473884937546372,
+          "LEAKAGE": -0.06194317058804604,
+          "TEMP_SENSOR": -0.13117259920203903,
+          "VTH": -0.9457322123138157
+        },
+        "ranked_tests": [
+          "IDDQ",
+          "VTH",
+          "FMAX",
+          "TEMP_SENSOR",
+          "FOCUS_MON",
+          "LEAKAGE",
+          "CONTACT_RES"
+        ]
+      }
+    },
+    {
+      "agent": "ConclusionEngine",
+      "index": 5,
+      "latency_ms": 0.1475999888498336,
+      "output": {
+        "citations": [
+          "analysis:correlation#FMAX",
+          "analysis:correlation#IDDQ",
+          "analysis:correlation#VTH",
+          "kb:KB_1_01",
+          "kb:KB_1_02",
+          "kb:KB_1_03",
+          "kb:KB_1_04",
+          "kb:KB_1_05",
+          "analysis:spatial#peripheral_edge",
+          "analysis:statistical#FMAX",
+          "analysis:statistical#IDDQ",
+          "analysis:statistical#VTH"
+        ],
+        "confidence": 0.9254246290272559,
+        "evidence_source_types": [
+          "correlation",
+          "knowledge_base",
+          "spatial",
+          "statistical"
+        ],
+        "ranked_scores": [
+          {
+            "root_cause": "edge_process_stress",
+            "score": 1.0
+          },
+          {
+            "root_cause": "tester_temperature_drift",
+            "score": 0.27198526818051333
+          },
+          {
+            "root_cause": "random_esd_damage",
+            "score": 0.2400483802817419
+          },
+          {
+            "root_cause": "lithography_focus_shift",
+            "score": 0.18497946134701776
+          },
+          {
+            "root_cause": "probe_card_contamination",
+            "score": 0.15577585994090465
+          }
+        ],
+        "retrieval_hits": [
+          {
+            "document_id": "KB_1_01",
+            "root_cause": "edge_process_stress",
+            "score": 9.31624112778292,
+            "text": "Synthetic reference case 1. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_1.",
+            "title": "Edge Process Stress"
+          },
+          {
+            "document_id": "KB_1_02",
+            "root_cause": "edge_process_stress",
+            "score": 9.31624112778292,
+            "text": "Synthetic reference case 2. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_2.",
+            "title": "Edge Process Stress"
+          },
+          {
+            "document_id": "KB_1_03",
+            "root_cause": "edge_process_stress",
+            "score": 9.31624112778292,
+            "text": "Synthetic reference case 3. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_3.",
+            "title": "Edge Process Stress"
+          },
+          {
+            "document_id": "KB_1_04",
+            "root_cause": "edge_process_stress",
+            "score": 9.31624112778292,
+            "text": "Synthetic reference case 4. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_4.",
+            "title": "Edge Process Stress"
+          },
+          {
+            "document_id": "KB_1_05",
+            "root_cause": "edge_process_stress",
+            "score": 9.31624112778292,
+            "text": "Synthetic reference case 5. Peripheral edge failures with high IDDQ and depressed VTH indicate edge process stress. Confirm with edge-distance concentration and cross-section review. Evidence family REF_1_5.",
+            "title": "Edge Process Stress"
+          }
+        ],
+        "retrieval_prediction": "edge_process_stress",
+        "retrieval_query": "peripheral edge failures edge distance elevated iddq reduced vth reduced fmax reduced temp sensor",
+        "root_cause": "edge_process_stress",
+        "rule_prediction": "edge_process_stress",
+        "rule_retrieval_disagreement": false
+      }
+    },
+    {
+      "agent": "ReportGenerator",
+      "index": 6,
+      "latency_ms": 0.005599984433501959,
+      "output": {
+        "citation_count": 12,
+        "material_claim_count": 2,
+        "section_count": 9
+      }
+    }
+  ],
+  "status": "completed"
+}

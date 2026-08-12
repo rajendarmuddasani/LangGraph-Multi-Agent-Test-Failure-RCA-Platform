@@ -1,0 +1,31 @@
+FROM cgr.dev/chainguard/python:latest-dev AS build
+
+ENV PATH="/home/nonroot/.local/bin:${PATH}"
+
+COPY backend/requirements-evidence.txt /tmp/requirements-evidence.txt
+RUN python -m pip install --no-cache-dir --user -r /tmp/requirements-evidence.txt
+
+FROM cgr.dev/chainguard/python:latest
+
+ENV PATH="/home/nonroot/.local/bin:${PATH}" \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    RCA_EVIDENCE_DATABASE=/home/nonroot/runtime/rca_sessions.sqlite3
+
+WORKDIR /app
+
+COPY --from=build /home/nonroot/.local /home/nonroot/.local
+COPY --chown=65532:65532 backend /app/backend
+COPY --chown=65532:65532 data/synthetic_rca_v1 /app/data/synthetic_rca_v1
+COPY --chown=65532:65532 evidence/model_evaluation.json /app/evidence/model_evaluation.json
+COPY --chown=65532:65532 evidence/runtime_manifest.json /app/evidence/runtime_manifest.json
+COPY --chown=65532:65532 favicon.ico /app/favicon.ico
+
+USER 65532:65532
+EXPOSE 8000
+
+HEALTHCHECK --interval=10s --timeout=3s --start-period=10s --retries=5 \
+    CMD ["/usr/bin/python", "-c", "import json,urllib.request; data=json.load(urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2)); assert data['status']=='ready'"]
+
+ENTRYPOINT ["/usr/bin/python"]
+CMD ["-m", "uvicorn", "evidence_app:app", "--app-dir", "backend", "--host", "0.0.0.0", "--port", "8000"]

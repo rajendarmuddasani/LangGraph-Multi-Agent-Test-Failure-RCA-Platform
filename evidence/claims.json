@@ -1,39 +1,243 @@
 {
-  "project": "LangGraph Multi-Agent Test Failure RCA Platform",
+  "project": "Evidence-Backed Multi-Agent Test Failure RCA",
+  "last_audited_utc": "2026-08-11",
+  "base_commit": "0a79f73fa804aa26ea130ebd07165b25dfdd6bd4",
+  "runtime_id": "synthetic-rca-evidence-v1",
+  "selected_policy_id": "fusion_balanced_v1",
+  "artifact_identity": {
+    "model_evaluation_sha256": "3551e661d57843f47e9ebbb97fd85c8bf96d66630abbd3eb9077f870559d1c31",
+    "runtime_manifest_sha256": "e2764c53ad4f09446a4919693c7a556ac9ff6a326513d01511746ade7bd09ac1",
+    "corpus_sha256": "cb98093f0e6ba1231e33923b3b12af367f064b74e0b9097fd5e69f09691bdbb1"
+  },
+  "reproduction": {
+    "commands": [
+      "python scripts/validate_evidence.py",
+      "python scripts/run_evidence_benchmark.py --stage replay",
+      "python -m pytest -q"
+    ],
+    "environment": "local Windows, Python 3.11 selected interpreter",
+    "test_result": "23 focused tests passed locally"
+  },
   "claims": [
     {
-      "claim": "DataAnalystAgent.parse_stdf() returns die_count > 0 and yield in [0,1] for any lot/wafer input",
-      "value": true,
-      "unit": "boolean",
-      "evidence_class": "measured",
-      "artifact": "tests/test_agent_tools.py::test_parse_stdf_yield_between_0_and_1"
+      "id": "P8-C001",
+      "claim": "The independently generated benchmark contains 75 STDF files split 30/20/25 across development, validation, and confirmation",
+      "value": {
+        "total": 75,
+        "development": 30,
+        "validation": 20,
+        "confirmation": 25
+      },
+      "unit": "files",
+      "evidence_class": "reproduced",
+      "artifact": "data/synthetic_rca_v1/manifest.json",
+      "allowed_wording": "75 independently generated synthetic STDF files with disjoint 30/20/25 splits"
     },
     {
-      "claim": "StatisticalAnalystAgent._t_test_analysis() returns a p-value in [0, 1] using scipy.stats.ttest_ind",
-      "value": true,
-      "unit": "boolean",
-      "evidence_class": "measured",
-      "artifact": "tests/test_agent_tools.py::test_t_test_p_value_range"
+      "id": "P8-C002",
+      "claim": "The benchmark contains 10,800 die and 75,600 parametric measurements",
+      "value": {
+        "die": 10800,
+        "measurements": 75600
+      },
+      "unit": "count",
+      "evidence_class": "reproduced",
+      "artifact": "data/synthetic_rca_v1/manifest.json"
     },
     {
-      "claim": "Control chart analysis always produces UCL > LCL (3-sigma bounds)",
-      "value": true,
-      "unit": "boolean",
-      "evidence_class": "measured",
-      "artifact": "tests/test_agent_tools.py::test_control_chart_ucl_greater_than_lcl"
+      "id": "P8-C003",
+      "claim": "The local BM25 index uses 30 independently generated synthetic RCA documents",
+      "value": 30,
+      "unit": "documents",
+      "evidence_class": "reproduced",
+      "artifact": "data/synthetic_rca_v1/corpus.json"
     },
     {
-      "claim": "All 8 Pydantic schemas enforce field constraints: empty lot_id rejected, priority enum validated, confidence in [0,1], progress in [0,100]",
+      "id": "P8-C004",
+      "claim": "Four frozen policies were evaluated on validation before confirmation was opened",
+      "value": 4,
+      "unit": "candidates",
+      "evidence_class": "reproduced",
+      "artifact": "evidence/candidate_results.json"
+    },
+    {
+      "id": "P8-C005",
+      "claim": "fusion_balanced_v1 was selected on validation using the predeclared objective and safety gates",
+      "value": "fusion_balanced_v1",
+      "unit": "policy_id",
+      "evidence_class": "reproduced",
+      "artifact": "evidence/selection.json"
+    },
+    {
+      "id": "P8-C006",
+      "claim": "Confirmation cause accuracy and macro F1 were 100% and 1.000 on 25 synthetic cases",
+      "value": {
+        "cause_accuracy": 1.0,
+        "macro_f1": 1.0,
+        "cases": 25
+      },
+      "unit": "fraction",
+      "evidence_class": "reproduced",
+      "artifact": "evidence/model_evaluation.json",
+      "allowed_wording": "100% cause accuracy and 1.000 macro F1 on 25 sealed synthetic confirmation cases"
+    },
+    {
+      "id": "P8-C007",
+      "claim": "The 25/25 confirmation result has a 95% Wilson interval of 86.68% to 100%",
+      "value": {
+        "lower": 0.8668077490609515,
+        "upper": 1.0
+      },
+      "unit": "fraction",
+      "evidence_class": "reproduced",
+      "artifact": "evidence/model_evaluation.json"
+    },
+    {
+      "id": "P8-C008",
+      "claim": "The confirmation policy automatically accepted 72% of cases with 100% accepted accuracy and routed 28% to review",
+      "value": {
+        "automatic_coverage": 0.72,
+        "accepted_accuracy": 1.0,
+        "review_rate": 0.28
+      },
+      "unit": "fraction",
+      "evidence_class": "reproduced",
+      "artifact": "evidence/model_evaluation.json"
+    },
+    {
+      "id": "P8-C009",
+      "claim": "Confirmation groundedness, citation correctness, task success, and report quality were 100% under repository definitions",
+      "value": {
+        "groundedness": 1.0,
+        "citation_correctness": 1.0,
+        "task_success": 1.0,
+        "report_quality": 1.0
+      },
+      "unit": "fraction",
+      "evidence_class": "reproduced",
+      "artifact": "evidence/model_evaluation.json"
+    },
+    {
+      "id": "P8-C010",
+      "claim": "Confirmation hallucination and unsupported-citation rates were 0% under repository definitions",
+      "value": {
+        "hallucination_rate": 0.0,
+        "unsupported_citation_rate": 0.0
+      },
+      "unit": "fraction",
+      "evidence_class": "reproduced",
+      "artifact": "evidence/model_evaluation.json"
+    },
+    {
+      "id": "P8-C011",
+      "claim": "Local confirmation latency was 4.05/5.34/5.46 ms p50/p95/p99",
+      "value": {
+        "p50_ms": 4.052100004628301,
+        "p95_ms": 5.337400012649596,
+        "p99_ms": 5.458700004965067
+      },
+      "unit": "milliseconds",
+      "evidence_class": "measured",
+      "artifact": "evidence/model_evaluation.json",
+      "allowed_wording": "Local benchmark only; not a production SLO"
+    },
+    {
+      "id": "P8-C012",
+      "claim": "The accepted deterministic runtime made zero external LLM calls at zero API cost",
+      "value": {
+        "external_llm_calls": 0,
+        "external_cost_usd": 0.0
+      },
+      "unit": "count_and_usd",
+      "evidence_class": "reproduced",
+      "artifact": "evidence/runtime_manifest.json"
+    },
+    {
+      "id": "P8-C013",
+      "claim": "All four malformed-input challenges failed closed",
+      "value": {
+        "rejected": 4,
+        "challenges": 4
+      },
+      "unit": "inputs",
+      "evidence_class": "reproduced",
+      "artifact": "evidence/model_evaluation.json"
+    },
+    {
+      "id": "P8-C014",
+      "claim": "The accepted workflow executes six deterministic LangGraph 1.2.10 agent nodes and records their traces",
+      "value": 6,
+      "unit": "stages",
+      "evidence_class": "reproduced",
+      "artifact": "tests/test_evidence_workflow.py"
+    },
+    {
+      "id": "P8-C015",
+      "claim": "Authenticated upload, SQLite persistence, HTML reports, upload bounds, and runtime tamper rejection are tested",
       "value": true,
       "unit": "boolean",
+      "evidence_class": "reproduced",
+      "artifact": "tests/test_evidence_api.py"
+    },
+    {
+      "id": "P8-C016",
+      "claim": "The Linux image is defined as a minimal non-root runtime with CI smoke gates",
+      "value": true,
+      "unit": "boolean",
+      "evidence_class": "architecture",
+      "artifact": "backend/Dockerfile.evidence",
+      "allowed_wording": "Container definition and pending CI gate; no local Linux runtime claim"
+    },
+    {
+      "id": "P8-C017",
+      "claim": "RCA time reduction from 4-8 hours to 20-30 minutes",
+      "value": "target only",
+      "unit": "time",
+      "evidence_class": "target",
+      "artifact": "evidence/PDF_REPOSITORY_AUDIT.md"
+    },
+    {
+      "id": "P8-C018",
+      "claim": "Greater than 85% accuracy on real expert-labeled RCA",
+      "value": "not evaluated",
+      "unit": "accuracy",
+      "evidence_class": "unsupported",
+      "artifact": "evidence/PDF_REPOSITORY_AUDIT.md"
+    },
+    {
+      "id": "P8-C019",
+      "claim": "500 or more RCAs per day and production uptime",
+      "value": "not benchmarked",
+      "unit": "throughput_uptime",
+      "evidence_class": "unsupported",
+      "artifact": "evidence/PDF_REPOSITORY_AUDIT.md"
+    },
+    {
+      "id": "P8-C020",
+      "claim": "The cleaned accepted runtime passes 23 focused tests with 91% statement coverage and zero known dependency vulnerabilities",
+      "value": {
+        "tests_passed": 23,
+        "coverage_percent": 91,
+        "known_runtime_vulnerabilities": 0
+      },
+      "unit": "count_and_percent",
       "evidence_class": "measured",
-      "artifact": "tests/test_schemas.py"
+      "artifact": "evidence/local_validation.json"
     }
   ],
   "external_services": {
-    "openai": "not_required_for_tests",
-    "postgresql": "not_required_for_tests",
-    "langgraph": "stubbed_via_sys_modules",
-    "note": "All agent tests use mock stubs; pure Python logic tested directly"
+    "openai": "not used by accepted runtime",
+    "postgresql": "not used by accepted runtime",
+    "qdrant": "not used by accepted runtime",
+    "sqlite": "used for local persistence",
+    "bm25": "real local retrieval over versioned corpus"
+  },
+  "truth_boundary": {
+    "data": "independently generated synthetic only",
+    "confirmation": "25 finite cases; five per class",
+    "review_recall": "confirmation denominator is zero because no confirmation error occurred",
+    "latency": "local Windows benchmark, not production SLO",
+    "runtime_surface": "vulnerable mocked backend and unused frontend removed",
+    "container": "Linux CI gate configured; local Windows-only engine cannot execute it"
   }
 }

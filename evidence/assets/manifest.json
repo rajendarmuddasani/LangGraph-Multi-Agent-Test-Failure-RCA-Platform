@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "generated_by": "scripts/render_evidence_assets.py",
+  "source_artifacts": [
+    "evidence/candidate_results.json",
+    "data/synthetic_rca_v1/cases/development/DEV_001.stdf"
+  ],
+  "assets": [
+    {
+      "path": "evidence/assets/candidate_comparison.png",
+      "sha256": "e797eb279352fa52284618ff9c172e0e08156b3aae0c3010e731232513f4dced",
+      "bytes": 45433,
+      "width": 1668,
+      "height": 888
+    },
+    {
+      "path": "evidence/assets/sample_wafer_map.png",
+      "sha256": "14b6776b984e333919f482242acaecc27aa4e8fcef57e1f49af8f572c04eb522",
+      "bytes": 36644,
+      "width": 951,
+      "height": 1033
+    },
+    {
+      "path": "favicon.ico",
+      "sha256": "ce28c2b725d609944d9da4d64ed735165ecc6002a8aa5481643dcc8106b9d97a",
+      "bytes": 1705,
+      "width": 64,
+      "height": 64
+    }
+  ]
+}

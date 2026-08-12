@@ -1,0 +1,95 @@
+{
+  "confirmation_metrics": {
+    "accepted_accuracy": 1.0,
+    "accuracy_bootstrap_95_ci": {
+      "iterations": 2000,
+      "lower_95": 1.0,
+      "seed": 8081,
+      "upper_95": 1.0
+    },
+    "accuracy_wilson_95_ci": {
+      "lower_95": 0.8668077490609515,
+      "successes": 25,
+      "total": 25,
+      "upper_95": 1.0
+    },
+    "automatic_coverage": 0.72,
+    "case_count": 25,
+    "cause_accuracy": 1.0,
+    "citation_correctness": 1.0,
+    "external_cost_usd": 0.0,
+    "external_llm_calls": 0,
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "latency_ms": {
+      "mean": 4.063372001983225,
+      "p50": 4.052100004628301,
+      "p95": 5.337400012649596,
+      "p99": 5.458700004965067
+    },
+    "macro_f1": 1.0,
+    "mean_evidence_source_diversity": 3.68,
+    "passes_safety_gates": true,
+    "per_class": {
+      "edge_process_stress": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 5
+      },
+      "lithography_focus_shift": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 5
+      },
+      "probe_card_contamination": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 5
+      },
+      "random_esd_damage": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 5
+      },
+      "tester_temperature_drift": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 5
+      }
+    },
+    "policy_id": "fusion_balanced_v1",
+    "report_quality": 1.0,
+    "review_rate": 0.28,
+    "review_recall": 1.0,
+    "review_recall_denominator": 0,
+    "safety_gates": {
+      "hallucination_at_most_0_05": true,
+      "report_quality_at_least_0_95": true,
+      "review_recall_at_least_0_95": true,
+      "task_success_at_least_0_98": true,
+      "unsupported_citations_at_most_0_02": true
+    },
+    "selection_score": 1.0,
+    "split": "confirmation",
+    "task_success_rate": 1.0,
+    "unsupported_citation_rate": 0.0
+  },
+  "corpus_relative_path": "data/synthetic_rca_v1/corpus.json",
+  "corpus_sha256": "cb98093f0e6ba1231e33923b3b12af367f064b74e0b9097fd5e69f09691bdbb1",
+  "external_cost_usd": 0.0,
+  "external_llm_calls": 0,
+  "fail_closed": true,
+  "orchestrator": "langgraph",
+  "langgraph_version": "1.2.10",
+  "agent_node_count": 6,
+  "runtime_dependency_count": 4,
+  "model_evaluation_sha256": "3551e661d57843f47e9ebbb97fd85c8bf96d66630abbd3eb9077f870559d1c31",
+  "runtime_id": "synthetic-rca-evidence-v1",
+  "schema_version": 1,
+  "selected_policy_id": "fusion_balanced_v1"
+}

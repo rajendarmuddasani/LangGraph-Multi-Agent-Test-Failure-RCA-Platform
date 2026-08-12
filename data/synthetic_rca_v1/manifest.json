@@ -1,0 +1,41 @@
+{
+  "case_count": 75,
+  "corpus_sha256": "cb98093f0e6ba1231e33923b3b12af367f064b74e0b9097fd5e69f09691bdbb1",
+  "die_count": 10800,
+  "generator_version": "synthetic-rca-v1",
+  "knowledge_document_count": 30,
+  "license": "MIT",
+  "measurement_count": 75600,
+  "provenance": "independently_generated_synthetic",
+  "root_causes": [
+    "edge_process_stress",
+    "probe_card_contamination",
+    "tester_temperature_drift",
+    "lithography_focus_shift",
+    "random_esd_damage"
+  ],
+  "schema_version": 1,
+  "split_counts": {
+    "confirmation": 25,
+    "development": 30,
+    "validation": 20
+  },
+  "split_manifests": {
+    "confirmation": {
+      "case_count": 25,
+      "relative_path": "manifests/confirmation.json",
+      "sha256": "4a6c646d74372bf4973d0f7aa919293d44e5637731f858970860e6e93e8324bd"
+    },
+    "development": {
+      "case_count": 30,
+      "relative_path": "manifests/development.json",
+      "sha256": "6dd6b88c5de2dc69617d114c35477b2d1ce29b9471df7bff8b1c757243a8a8b6"
+    },
+    "validation": {
+      "case_count": 20,
+      "relative_path": "manifests/validation.json",
+      "sha256": "a9162d313dbcaaa1035308739371e2b56b1782145abef7844bd00f607a15077d"
+    }
+  },
+  "split_strategy": "disjoint case and scenario-family groups"
+}

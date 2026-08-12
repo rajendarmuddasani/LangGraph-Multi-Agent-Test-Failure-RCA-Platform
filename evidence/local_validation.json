@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "validated_at_utc": "2026-08-11",
+  "base_commit": "0a79f73fa804aa26ea130ebd07165b25dfdd6bd4",
+  "runtime": {
+    "orchestrator": "langgraph",
+    "langgraph_version": "1.2.10",
+    "agent_node_count": 6,
+    "selected_policy_id": "fusion_balanced_v1"
+  },
+  "tests": {
+    "command": "python -m pytest -q --cov=rca_evidence --cov=evidence_app",
+    "passed": 23,
+    "failed": 0,
+    "warnings": 1,
+    "coverage_percent": 91,
+    "warning_scope": "installed Starlette/httpx TestClient deprecation notice"
+  },
+  "lint": {
+    "command": "python -m ruff check backend/rca_evidence backend/evidence_app.py scripts tests --select E,W,F --ignore E501",
+    "status": "pass"
+  },
+  "evidence": {
+    "deterministic_regeneration": "pass",
+    "files_compared": 80,
+    "stdf_files_compared": 75,
+    "frozen_confirmation_replay": "pass",
+    "runtime_manifest_sha256": "e2764c53ad4f09446a4919693c7a556ac9ff6a326513d01511746ade7bd09ac1",
+    "model_evaluation_sha256": "3551e661d57843f47e9ebbb97fd85c8bf96d66630abbd3eb9077f870559d1c31",
+    "corpus_sha256": "cb98093f0e6ba1231e33923b3b12af367f064b74e0b9097fd5e69f09691bdbb1"
+  },
+  "security": {
+    "pip_audit": {
+      "manifest": "backend/requirements-evidence.txt",
+      "status": "pass",
+      "known_vulnerabilities": 0
+    },
+    "development_pip_audit": {
+      "manifest": "requirements-dev.txt",
+      "status": "pass",
+      "known_vulnerabilities": 0
+    },
+    "bandit": {
+      "scope": "backend/rca_evidence backend/evidence_app.py",
+      "status": "pass",
+      "findings": 0
+    },
+    "workspace_diagnostics": {
+      "status": "pass",
+      "errors": 0
+    },
+    "compose_config": "pass"
+  },
+  "privacy": {
+    "status": "pass",
+    "public_text_files_scanned": 60,
+    "secret_or_restricted_identifier_matches": 0,
+    "tracked_private_files": 0,
+    "provenance_hash_review": {
+      "status": "pass",
+      "public_files": 59,
+      "confidential_reference_files": 241,
+      "minimum_file_bytes": 80,
+      "exact_long_line_hash_overlap": 0,
+      "exact_file_hash_overlap": 0
+    }
+  },
+  "browser": {
+    "runtime_desktop": {
+      "viewport_width": 1440,
+      "health": "ready",
+      "orchestrator": "langgraph",
+      "agent_node_count": 6,
+      "sample_root_cause": "edge_process_stress",
+      "stage_count": 6,
+      "citation_count": 12,
+      "report_heading": "Synthetic STDF Root Cause Analysis",
+      "report_citation_count": 12,
+      "horizontal_overflow": false
+    },
+    "runtime_mobile": {
+      "viewport_width": 390,
+      "stage_count": 6,
+      "citation_count": 12,
+      "horizontal_overflow": false
+    },
+    "one_page": {
+      "desktop_width": 1440,
+      "mobile_width": 390,
+      "ordered_sections": 7,
+      "images_loaded": 2,
+      "horizontal_overflow": false,
+      "accepted_numbers_present": true
+    },
+    "walkthrough": {
+      "desktop_width": 1440,
+      "mobile_width": 390,
+      "sections": 9,
+      "questions": 5,
+      "images_loaded": 2,
+      "horizontal_overflow": false
+    }
+  },
+  "container": {
+    "dockerfile_diagnostics": "pass",
+    "local_linux_runtime": "not_run",
+    "reason": "Local Docker Engine is Windows-container only; the Linux Dockerfile is validated by the pending GitHub Actions build and authenticated smoke job",
+    "remote_ci_status": "pending_publication"
+  },
+  "patch_hygiene": {
+    "git_diff_check": "pass"
+  },
+  "visual_assets": {
+    "asset_count": 3,
+    "total_bytes": 83782,
+    "hash_validation": "pass"
+  }
+}
