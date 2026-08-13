@@ -1,6 +1,6 @@
 -r backend/requirements-evidence.txt
 bandit==1.9.4
-matplotlib==3.11.1
+matplotlib==3.10.8
 pip-audit==2.9.0
 pytest==9.1.1
 pytest-cov==7.1.0
